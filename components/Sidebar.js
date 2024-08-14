@@ -4,6 +4,8 @@ import Link from 'next/link';
 import SidebarNoteList from './SidebarNoteList';
 import EditButton from './EditButton';
 import NoteListSkeleton from './NoteListSkeleton';
+import SidebarSearchField from './SidebarSearchField';
+import SidebarImport from './SidebarImport';
 
 export default async function Sidebar() {
   return (
@@ -23,7 +25,7 @@ export default async function Sidebar() {
           </section>
         </Link>
         <section className="sidebar-menu" role="menubar">
-          {/* SideSearchField */}
+          <SidebarSearchField />
           <EditButton noteId={null}>New</EditButton>
         </section>
         <nav>
@@ -31,6 +33,7 @@ export default async function Sidebar() {
             <SidebarNoteList />
           </Suspense>
         </nav>
+        <SidebarImport />
       </section>
     </>
   );

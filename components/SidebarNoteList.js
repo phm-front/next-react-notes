@@ -1,5 +1,7 @@
 import dayjs from 'dayjs';
 import SidebarNoteItem from './SidebarNoteItem';
+import SidebarNoteListFilter from './SidebarNoteListFilter';
+import SidebarNoteItemHeader from './SidebarNoteItemHeader';
 import { getAllNotes } from '@/lib/redis';
 
 export default async function NoteList() {
@@ -11,15 +13,16 @@ export default async function NoteList() {
   }
 
   return (
-    <ul className="notes-list">
-      {arr.map(([noteId, note]) => {
-        const { title, updateTime } = JSON.parse(note);
-        return (
-          <li key={noteId}>
-            <SidebarNoteItem noteId={noteId} note={JSON.parse(note)} />
-          </li>
-        );
-      })}
-    </ul>
+    <SidebarNoteListFilter notes = {
+      Object.entries(notes).map(([noteId, note]) => {
+        const noteData = JSON.parse(note)
+        return {
+          noteId,
+          note: noteData,
+          header: <SidebarNoteItemHeader title={noteData.title} updateTime={noteData.updateTime} />
+        }
+      })
+    }>
+    </SidebarNoteListFilter>
   );
 }

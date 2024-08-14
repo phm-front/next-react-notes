@@ -260,7 +260,7 @@ hr {
 }
 
 ul.notes-list {
-  padding: 16px 0;
+  padding: 16px 16px;
 }
 .notes-list > li {
   padding: 0 16px;
