@@ -1,5 +1,5 @@
 import Note from '@/components/Note';
-import { getNote } from '@/lib/redis';
+import { getNote } from '@/lib/prisma';
 
 export default async function Page({ params }) {
   // 动态路由 获取笔记 id

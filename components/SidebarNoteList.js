@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import SidebarNoteItem from './SidebarNoteItem';
 import SidebarNoteListFilter from './SidebarNoteListFilter';
 import SidebarNoteItemHeader from './SidebarNoteItemHeader';
-import { getAllNotes } from '@/lib/redis';
+import { getAllNotes } from '@/lib/prisma';
 
 export default async function NoteList() {
   const notes = await getAllNotes();

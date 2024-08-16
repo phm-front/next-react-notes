@@ -1,6 +1,6 @@
 'use server'
 
-import { addNote, delNote, updateNote } from "@/lib/redis"
+import { addNote, delNote, updateNote } from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 
@@ -15,12 +15,12 @@ export async function saveNote(prevState, formData) {
   if (noteId) {
     await updateNote(noteId, data)
     revalidatePath('/', 'layout')
-    // redirect(`/note/${noteId}`)
+    redirect(`/note/${noteId}`)
     return { message: `Edit Success!` }
   } else {
     const noteId = await addNote(data)
     revalidatePath('/', 'layout')
-    // redirect(`/note/${noteId}`)
+    redirect(`/note/${noteId}`)
     return { message: `Add Success!` }
   }
 }
